@@ -1,6 +1,6 @@
 package net.rsemlal.tisseos.data.attributes
 
-import net.rsemlal.tisseos.data.additionnals.OperatorCode
+import net.rsemlal.tisseos.data.objects.OperatorCode
 import net.rsemlal.tisseos.data.Stop
 
 trait OperatorCodesAttribute {

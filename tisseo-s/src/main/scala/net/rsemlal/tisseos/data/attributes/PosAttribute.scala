@@ -1,6 +1,6 @@
 package net.rsemlal.tisseos.data.attributes
 
-import net.rsemlal.tisseos.data.additionnals.GeoLoc
+import net.rsemlal.tisseos.data.objects.GeoLoc
 
 trait PosAttribute {
   /**

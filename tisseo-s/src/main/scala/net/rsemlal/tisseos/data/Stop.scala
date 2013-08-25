@@ -1,6 +1,6 @@
 package net.rsemlal.tisseos.data
 
-import net.rsemlal.tisseos.data.additionnals.Id
+import net.rsemlal.tisseos.data.objects.Id
 import net.rsemlal.tisseos.data.attributes.IdAttribute
 
 /**

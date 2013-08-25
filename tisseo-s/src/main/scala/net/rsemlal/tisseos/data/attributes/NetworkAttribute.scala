@@ -1,6 +1,6 @@
 package net.rsemlal.tisseos.data.attributes
 
-import net.rsemlal.tisseos.data.additionnals.Network
+import net.rsemlal.tisseos.data.objects.Network
 
 trait NetworkAttribute {
   /**

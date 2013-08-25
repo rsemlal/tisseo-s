@@ -1,7 +1,7 @@
 package net.rsemlal.tisseos.data
 
 import org.joda.time.DateTime
-import net.rsemlal.tisseos.data.additionnals.Destination
+import net.rsemlal.tisseos.data.objects.Destination
 import net.rsemlal.tisseos.data.attributes.DestinationsAttribute
 
 /**

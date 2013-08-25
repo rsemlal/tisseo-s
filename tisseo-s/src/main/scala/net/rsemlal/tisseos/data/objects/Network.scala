@@ -1,4 +1,4 @@
-package net.rsemlal.tisseos.data.additionnals
+package net.rsemlal.tisseos.data.objects
 
 /**
  * Réseau.

@@ -1,6 +1,6 @@
 package net.rsemlal.tisseos.data.places
 
-import net.rsemlal.tisseos.data.additionnals.GeoLoc
+import net.rsemlal.tisseos.data.objects.GeoLoc
 import net.rsemlal.tisseos.data.attributes.PosAttribute
 
 object Place {
