@@ -37,7 +37,11 @@ trait Place {
    */
   val placeCategory: PlaceCategory
 
-  def withPos(_pos: GeoLoc): Place with PosAttribute{}
+  /**
+   * Ajoute une position à cet objet.
+   * @param _pos Position.
+   */
+  def withPos(_pos: GeoLoc): Place with PosAttribute {}
 
   override def equals(obj: Any) = obj match {
     case other: Place => this.label == other.label &&

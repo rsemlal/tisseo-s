@@ -3,6 +3,11 @@ package net.rsemlal.tisseos.data.places
 import net.rsemlal.tisseos.data.additionnals.GeoLoc
 import net.rsemlal.tisseos.data.attributes.PosAttribute
 
+/**
+ * Route.
+ * @param label Nom complet.
+ * @param key Clé.
+ */
 case class Road(label: String, key: String) extends Place {
   override val placeCategory = PlaceCategory.Road
 
