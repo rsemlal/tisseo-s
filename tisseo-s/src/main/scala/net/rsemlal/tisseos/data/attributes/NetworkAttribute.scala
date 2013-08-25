@@ -1,7 +1,7 @@
-package net.rsemlal.tisseos.data.ifaces
+package net.rsemlal.tisseos.data.attributes
 
 import net.rsemlal.tisseos.data.additionnals.Network
 
-trait NetworkObject {
+trait NetworkAttribute {
 	val network: Network
 }
