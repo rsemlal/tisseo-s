@@ -4,6 +4,7 @@ package net.rsemlal.tisseos.data.objects
  * Position géographique.
  * @param x Latitude.
  * @param y Longitude.
- * @param srid SRID (http://en.wikipedia.org/wiki/SRID).
+ * @param srid [[SRID]].
  */
-case class GeoLoc(x: Double, y: Double, srid: String)
+case class GeoLoc(override val x: Double, override val y: Double, srid: Srid)
+  extends Coords(x, y)
