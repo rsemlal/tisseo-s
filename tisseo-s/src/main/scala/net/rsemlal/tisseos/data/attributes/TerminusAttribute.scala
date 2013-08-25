@@ -5,5 +5,8 @@ import net.rsemlal.tisseos.data.Line
 
 trait TerminusAttribute {
   this: Line =>
+  /**
+   * Terminus de la ligne.
+   */
   val terminus: (StopArea, StopArea)
 }

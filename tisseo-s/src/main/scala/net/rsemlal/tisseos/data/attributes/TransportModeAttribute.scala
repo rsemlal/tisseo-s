@@ -5,5 +5,8 @@ import net.rsemlal.tisseos.data.TransportMode
 
 trait TransportModeAttribute {
   this: Line =>
+  /**
+   * Mode de transport.
+   */
   val transportMode: TransportMode
 }
