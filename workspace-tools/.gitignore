@@ -1,0 +1,5 @@
+/conf/Build.scala
+/conf/workspace.gitignore
+/conf/workspace.plugins.sbt
+/md/README.md
+/scripts/env.sh

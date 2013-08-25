@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>workspace-tools</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>conf/workspace.gitignore</name>
+			<type>1</type>
+			<locationURI>WORKSPACE_LOC/.gitignore</locationURI>
+		</link>
+		<link>
+			<name>md/README.md</name>
+			<type>1</type>
+			<locationURI>WORKSPACE_LOC/README.md</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>
