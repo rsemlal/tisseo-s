@@ -1,8 +1,11 @@
 package net.rsemlal.tisseos.data.objects
 
 object Coords {
-  // TODO apply
-  // TODO unapply
+  def apply(x: Double, y: Double) =
+    new Coords(x, y)
+
+  def unapply(o: Coords) =
+    Some((o.x, o.y))
 }
 
 /**
