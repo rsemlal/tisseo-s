@@ -1,4 +1,4 @@
-package net.rsemlal.tisseos.data.queries.results
+package net.rsemlal.tisseos.queries.results
 
 import org.joda.time.DateTime
 import net.rsemlal.tisseos.data.Departure
