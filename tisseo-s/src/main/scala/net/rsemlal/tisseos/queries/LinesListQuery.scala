@@ -71,7 +71,7 @@ final class LinesListQuery protected (
    */
   final def network = this.params.get(QueryParams.network).map { value =>
     Network(value)
-  }
+  } getOrElse(Network.Default)
 
   /**
    * @param value Filtre sur une seule ligne.
@@ -103,4 +103,5 @@ final class LinesListQuery protected (
     this.params
       .get(QueryParams.displayTerminus)
       .flatMap(QueryStringFormatting.queryStringToBoolean _)
+      .getOrElse(false)
 }
