@@ -3,16 +3,16 @@ package net.rsemlal.tisseos.queries
 import scala.collection.immutable.HashMap
 import net.rsemlal.tisseos.data.objects.Id
 import net.rsemlal.tisseos.data.objects.Network
+import net.rsemlal.tisseos.data.objects.OperatorCode
 import net.rsemlal.tisseos.queries.consts.QueryParams
 import net.rsemlal.tisseos.queries.consts.QueryStringFormatting
-import net.rsemlal.tisseos.queries.consts.QueryServices
 
 /**
- * @define service linesList
- * @define thisclass [[LinesListQuery]].
+ * @define service departureBoard
+ * @define thisclass [[DepartureBoardQuery]].
  */
-object LinesListQuery {
-  type QueryType = LinesListQuery
+object DepartureBoardQuery {
+  type QueryType = DepartureBoardQuery
 
   /**
    * Construit une requête $service pour l'api temps réél tisseo (format XML).
@@ -39,14 +39,14 @@ object LinesListQuery {
  * @param _format Format de retour de la requête (XML ou JSON).
  * @param _params Paramètres additionnels de la requête.
  *
- * @define service linesList
- * @define thisclass [[LinesListQuery]].
+ * @define service departureBoard
+ * @define thisclass [[DepartureBoardQuery]].
  */
-final class LinesListQuery protected (
+final class DepartureBoardQuery protected (
   _key: String,
   _format: TisseoQuery.ResultFormat.Value,
   _params: Map[String, String])
-  extends TisseoQuery(QueryServices.linesList, _key, _format, _params) {
+  extends TisseoQuery("departureBoard", _key, _format, _params) {
 
   /**
    * Ajoute un paramètre à la requête.
@@ -55,7 +55,7 @@ final class LinesListQuery protected (
    * @return Nouvel objet $thisclass.
    */
   override def +(param: String, value: String) = {
-    new LinesListQuery.QueryType(key, format, params + (param -> value))
+    new DepartureBoardQuery.QueryType(key, format, params + (param -> value))
   }
 
   /**
@@ -67,6 +67,14 @@ final class LinesListQuery protected (
   }
 
   /**
+   * @param value Désigne le code opérateur.
+   * @return Nouvel objet $thisclass.
+   */
+  final def operatorCode(value: OperatorCode) = {
+    this.+(QueryParams.operatorCode, value.value).network(value.network)
+  }
+
+  /**
    * @param value Filtre sur une seule ligne.
    * @return Nouvel objet $thisclass.
    */
@@ -75,10 +83,26 @@ final class LinesListQuery protected (
   }
 
   /**
-   * @param value Retourne en plus les arrêts logiques terminus de chaque ligne.
+   * @param value Désigne le numéro de l’arrêt physique ou poteau.
    * @return Nouvel objet $thisclass.
    */
-  final def displayTerminus(value: Boolean) = {
-    this.+(QueryParams.displayTerminus, QueryStringFormatting.booleanToQueryString(value))
+  final def stopPointId(value: Id) = {
+    this.+(QueryParams.stopPointId, value.value)
+  }
+
+  /**
+   * @param value Filtre sur le nb maxi de résultats à retourner.
+   * @return Nouvel objet $thisclass.
+   */
+  final def number(value: Int) = {
+    this.+(QueryParams.number, value.toString)
+  }
+
+  /**
+   * @param value Permet de spécifier si on souhaite des horaires « théoriques » ([[Boolean.False]]) ou « temps réels » ([[Boolean.True]]).
+   * @return Nouvel objet $thisclass.
+   */
+  final def displayRealTime(value: Boolean) = {
+    this.+(QueryParams.displayRealTime, QueryStringFormatting.booleanToQueryString(value))
   }
 }

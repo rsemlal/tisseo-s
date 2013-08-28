@@ -3,16 +3,18 @@ package net.rsemlal.tisseos.queries
 import scala.collection.immutable.HashMap
 import net.rsemlal.tisseos.data.objects.Id
 import net.rsemlal.tisseos.data.objects.Network
+import net.rsemlal.tisseos.data.objects.Srid
+import net.rsemlal.tisseos.queries.consts.Bbox
 import net.rsemlal.tisseos.queries.consts.QueryParams
 import net.rsemlal.tisseos.queries.consts.QueryStringFormatting
 import net.rsemlal.tisseos.queries.consts.QueryServices
 
 /**
- * @define service linesList
- * @define thisclass [[LinesListQuery]].
+ * @define service stopAreasList
+ * @define thisclass [[StopAreasListQuery]].
  */
-object LinesListQuery {
-  type QueryType = LinesListQuery
+object StopAreasListQuery {
+  type QueryType = StopAreasListQuery
 
   /**
    * Construit une requête $service pour l'api temps réél tisseo (format XML).
@@ -39,14 +41,14 @@ object LinesListQuery {
  * @param _format Format de retour de la requête (XML ou JSON).
  * @param _params Paramètres additionnels de la requête.
  *
- * @define service linesList
- * @define thisclass [[LinesListQuery]].
+ * @define service stopAreasList
+ * @define thisclass [[StopAreasListQuery]].
  */
-final class LinesListQuery protected (
+final class StopAreasListQuery protected (
   _key: String,
   _format: TisseoQuery.ResultFormat.Value,
   _params: Map[String, String])
-  extends TisseoQuery(QueryServices.linesList, _key, _format, _params) {
+  extends TisseoQuery(QueryServices.stopAreasList, _key, _format, _params) {
 
   /**
    * Ajoute un paramètre à la requête.
@@ -55,7 +57,7 @@ final class LinesListQuery protected (
    * @return Nouvel objet $thisclass.
    */
   override def +(param: String, value: String) = {
-    new LinesListQuery.QueryType(key, format, params + (param -> value))
+    new StopAreasListQuery.QueryType(key, format, params + (param -> value))
   }
 
   /**
@@ -75,10 +77,42 @@ final class LinesListQuery protected (
   }
 
   /**
-   * @param value Retourne en plus les arrêts logiques terminus de chaque ligne.
+   * @param value Filtre sur les zones d’arrêts arrivant et partant de ce terminus uniquement.
    * @return Nouvel objet $thisclass.
    */
-  final def displayTerminus(value: Boolean) = {
-    this.+(QueryParams.displayTerminus, QueryStringFormatting.booleanToQueryString(value))
+  final def terminusId(value: Id) = {
+    this.+(QueryParams.terminusId, value.value)
+  }
+
+  /**
+   * @param value Filtre pour les arrêts dont les données GPS sont comprises dans ce bounding box.
+   * @return Nouvel objet $thisclass.
+   */
+  final def bbox(value: Bbox) = {
+    this.+(QueryParams.bbox, QueryStringFormatting.bboxToQueryString(value))
+  }
+
+  /**
+   * @param value Numéro SRID du référentiel de projection spatial.
+   * @return Nouvel objet $thisclass.
+   */
+  final def srid(value: Srid) = {
+    this.+(QueryParams.srid, value.value)
+  }
+
+  /**
+   * @param value Retourne en plus les lignes de chaque arrêt.
+   * @return Nouvel objet $thisclass.
+   */
+  final def displayLines(value: Boolean) = {
+    this.+(QueryParams.displayLines, QueryStringFormatting.booleanToQueryString(value))
+  }
+
+  /**
+   * @param value Retourne en plus les coordonnées de chaque arrêt. C’est le barycentre des arrêts de la zone.
+   * @return Nouvel objet $thisclass.
+   */
+  final def displayCoordXY(value: Boolean) = {
+    this.+(QueryParams.displayCoordXY, QueryStringFormatting.booleanToQueryString(value))
   }
 }

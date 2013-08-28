@@ -74,7 +74,12 @@ class TisseoQuery protected (
   /**
    * Paramètres de la requête.
    */
-  def params = {
+  final lazy val params = {
     _params + (QueryParams.format -> format.value) + (QueryParams.key -> key)
+  }
+
+  override final lazy val toString = {
+    val strParams = for ((a, b) <- params) yield a + " = " + b
+    s"${this.getClass.getSimpleName}(service = ${serviceName}, key = ${key}, ${strParams.mkString(", ")})"
   }
 }
