@@ -6,7 +6,7 @@ import net.rsemlal.tisseos.data.StopArea
 import net.rsemlal.tisseos.data.Stop
 
 /**
- * Retour du service stopPointsList.
+ * Retour du service DepartureBoard.
  * @param expirationDate Date d'expiration.
  * @param stopArea Zone d'arrêt.
  * @param stop Arrêt.
