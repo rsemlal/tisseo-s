@@ -9,7 +9,8 @@ import net.rsemlal.tisseos.queries.StopAreasListQuery
 import net.rsemlal.tisseos.queries.StopPointsListQuery
 import net.rsemlal.tisseos.queries.DepartureBoardQuery
 
-class TisseoQueriesBuilderImpl(val tisseoApiConfiguration: TisseoAPIConfiguration) extends TisseoQueriesBuilder {
+class TisseoQueriesBuilderImpl(val tisseoApiConfiguration: TisseoAPIConfiguration)
+  extends TisseoQueriesBuilder {
 
   override def buildGenericQuery(
     serviceName: String,

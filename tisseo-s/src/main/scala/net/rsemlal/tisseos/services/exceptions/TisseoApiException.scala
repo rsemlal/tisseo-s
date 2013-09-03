@@ -1,14 +1,17 @@
 package net.rsemlal.tisseos.services.exceptions
 
-class TisseoApiException(message: String, innerException: Throwable)
-  extends Exception(message, innerException) {
+import net.rsemlal.tisseos.services.boilerplate.ExceptionHelper
 
-  def this(message: String) =
-    this(message, null)
-
-  def this(innerException: Throwable) =
-    this("", innerException)
-
-  def this() =
-    this("", null)
+object TisseoApiException extends ExceptionHelper[TisseoApiException] {
+  def apply(message: String, innerException: Throwable) = {
+    new TisseoApiException(message, innerException)
+  }
 }
+
+/**
+ * Exception d'utilisation l'api tisseo.
+ * @param message Message.
+ * @param innerException Erreur imbriquée.
+ */
+class TisseoApiException(message: String, innerException: Throwable)
+  extends Exception(message, innerException)

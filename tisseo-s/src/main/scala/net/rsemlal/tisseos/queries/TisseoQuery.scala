@@ -80,6 +80,6 @@ class TisseoQuery protected (
 
   override final lazy val toString = {
     val strParams = for ((a, b) <- params) yield a + " = " + b
-    s"${this.getClass.getSimpleName}(service = ${serviceName}, key = ${key}, ${strParams.mkString(", ")})"
+    s"${this.getClass.getSimpleName}(service = ${serviceName}, ${strParams.mkString(", ")})"
   }
 }
